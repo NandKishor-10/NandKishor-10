@@ -29,6 +29,8 @@ import {
   Check as CheckIcon,
   History as HistoryIcon,
   OpenInNew as OpenInNewIcon,
+  X as XIcon,
+  Instagram as InstagramIcon,
 } from '@mui/icons-material';
 import { motion } from 'motion/react';
 import { profileData } from '../data/portfolioData';
@@ -58,7 +60,6 @@ export const ContactSection: React.FC = () => {
   const [showHistory, setShowHistory] = useState(false);
   const theme = useTheme();
 
-  // Load sent messages history from localStorage
   useEffect(() => {
     try {
       const saved = localStorage.getItem('portfolio_sent_messages');
@@ -66,7 +67,6 @@ export const ContactSection: React.FC = () => {
         setSentMessages(JSON.parse(saved));
       }
     } catch {
-      // Ignore localStorage errors
     }
   }, []);
 
@@ -91,7 +91,6 @@ export const ContactSection: React.FC = () => {
     e.preventDefault();
     setErrorAlert(null);
 
-    // Validation
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setErrorAlert('Please fill in all required fields (Name, Email, and Message).');
       return;
@@ -106,7 +105,6 @@ export const ContactSection: React.FC = () => {
     setLoading(true);
 
     setTimeout(() => {
-      // Create new message log
       const newMessage: SentMessage = {
         id: Date.now(),
         name: formData.name.trim(),
@@ -126,17 +124,14 @@ export const ContactSection: React.FC = () => {
       try {
         localStorage.setItem('portfolio_sent_messages', JSON.stringify(updatedHistory));
       } catch {
-        // Ignore localStorage error
       }
 
-      // Trigger mailto draft launch
       const mailtoSubject = encodeURIComponent(formData.subject.trim() || `Portfolio Contact from ${formData.name.trim()}`);
       const mailtoBody = encodeURIComponent(
         `Hi Nand Kishor,\n\n${formData.message.trim()}\n\n---\nSender Name: ${formData.name.trim()}\nSender Email: ${formData.email.trim()}`
       );
       const mailtoUrl = `mailto:${profileData.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
 
-      // Open email client
       window.location.href = mailtoUrl;
 
       setLoading(false);
@@ -261,32 +256,67 @@ export const ContactSection: React.FC = () => {
                   <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 2 }}>
                     Connect on Social Profiles
                   </Typography>
-                  <Stack direction="row" spacing={2}>
-                    <Button
-                      variant="outlined"
-                      startIcon={<LinkedInIcon />}
-                      endIcon={<OpenInNewIcon sx={{ fontSize: 14 }} />}
-                      href={profileData.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      fullWidth
-                      sx={{ borderRadius: 2 }}
-                    >
-                      LinkedIn
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      startIcon={<GitHubIcon />}
-                      endIcon={<OpenInNewIcon sx={{ fontSize: 14 }} />}
-                      href={profileData.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      fullWidth
-                      sx={{ borderRadius: 2 }}
-                    >
-                      GitHub
-                    </Button>
-                  </Stack>
+                  <Grid container spacing={2}>
+                    <Grid size={{ xs: 6 }}>
+                      <Button
+                        variant="outlined"
+                        startIcon={<LinkedInIcon />}
+                        endIcon={<OpenInNewIcon sx={{ fontSize: 14 }} />}
+                        href={profileData.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        fullWidth
+                        sx={{ borderRadius: 2 }}
+                      >
+                        LinkedIn
+                      </Button>
+                    </Grid>
+
+                    <Grid size={{ xs: 6 }}>
+                      <Button
+                        variant="outlined"
+                        startIcon={<GitHubIcon />}
+                        endIcon={<OpenInNewIcon sx={{ fontSize: 14 }} />}
+                        href={profileData.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        fullWidth
+                        sx={{ borderRadius: 2 }}
+                      >
+                        GitHub
+                      </Button>
+                    </Grid>
+
+                    <Grid size={{ xs: 6 }}>
+                      <Button
+                        variant="outlined"
+                        startIcon={<XIcon />}
+                        endIcon={<OpenInNewIcon sx={{ fontSize: 14 }} />}
+                        href={profileData.x}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        fullWidth
+                        sx={{ borderRadius: 2 }}
+                      >
+                        X (Twitter)
+                      </Button>
+                    </Grid>
+
+                    <Grid size={{ xs: 6 }}>
+                      <Button
+                        variant="outlined"
+                        startIcon={<InstagramIcon />}
+                        endIcon={<OpenInNewIcon sx={{ fontSize: 14 }} />}
+                        href={profileData.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        fullWidth
+                        sx={{ borderRadius: 2 }}
+                      >
+                        Instagram
+                      </Button>
+                    </Grid>
+                  </Grid>
                 </Paper>
 
                 {/* Sent Messages History Toggle if available */}

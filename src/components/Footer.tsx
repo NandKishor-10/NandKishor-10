@@ -7,18 +7,21 @@ import {
   Stack,
   Divider,
   Button,
+  Avatar,
+  useTheme,
 } from '@mui/material';
 import {
   GitHub as GitHubIcon,
   LinkedIn as LinkedInIcon,
   Email as EmailIcon,
   KeyboardArrowUp as TopIcon,
-  Code as CodeIcon,
+  X as XIcon,
+  Instagram as InstagramIcon,
 } from '@mui/icons-material';
 import { profileData } from '../data/portfolioData';
 
 export const Footer: React.FC = () => {
-  
+const theme = useTheme();
   const handleScrollTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -42,20 +45,23 @@ export const Footer: React.FC = () => {
         >
           {/* Brand */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-            <Box
+            <Avatar
+              src='/logo.png'
               sx={{
-                width: 36,
-                height: 36,
-                borderRadius: 2,
-                bgcolor: '#e2e8f0',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#0f172a',
+                width: 56,
+                height: 56,
+                color: 'primary.contrastText',
+                fontSize: '1.5rem',
+                fontWeight: 800,
+                mb: 0.5,
+                boxShadow: theme.palette.mode === 'dark'
+                  ? '0 0 20px rgba(226, 232, 240, 0.2)'
+                  : '0 4px 16px rgba(15, 23, 42, 0.15)',
               }}
             >
-              <CodeIcon fontSize="small" />
-            </Box>
+              NK
+            </Avatar>
+
             <Box>
               <Typography variant="subtitle1" sx={{ color: '#fff', lineHeight: 1.2, fontWeight: 800 }}>
                 NAND KISHOR GORAIN
@@ -93,6 +99,24 @@ export const Footer: React.FC = () => {
             >
               <GitHubIcon fontSize="small" />
             </IconButton>
+            <IconButton
+              component="a"
+              href={profileData.x}
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: '#cbd5e1', '&:hover': { color: '#ffffff', bgcolor: 'rgba(255,255,255,0.08)' } }}
+            >
+              <XIcon fontSize="small" />
+            </IconButton>
+            <IconButton
+              component="a"
+              href={profileData.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: '#cbd5e1', '&:hover': { color: '#ffffff', bgcolor: 'rgba(255,255,255,0.08)' } }}
+            >
+              <InstagramIcon fontSize="small" />
+            </IconButton>
           </Stack>
         </Stack>
 
@@ -100,7 +124,11 @@ export const Footer: React.FC = () => {
 
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
           <Typography variant="caption" sx={{ color: '#64748b' }}>
-            © {new Date().getFullYear()} Nand Kishor Gorain. Built with React, TypeScript & Material UI.
+            If you are seeing this message, it means you have reached the end of the page.
+            <br />
+            Can't thank you enough for your time.
+            <br />
+            I also love to watch anime BTW.
           </Typography>
 
           <Button

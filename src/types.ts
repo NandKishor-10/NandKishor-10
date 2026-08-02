@@ -59,6 +59,8 @@ export interface ProfileInfo {
   email: string;
   linkedin: string;
   github: string;
+  x: string;
+  instagram: string;
   summary: string;
   stats: {
     label: string;
