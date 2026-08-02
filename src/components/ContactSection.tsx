@@ -58,7 +58,6 @@ export const ContactSection: React.FC = () => {
   const [showHistory, setShowHistory] = useState(false);
   const theme = useTheme();
 
-  // Load sent messages history from localStorage
   useEffect(() => {
     try {
       const saved = localStorage.getItem('portfolio_sent_messages');
@@ -66,7 +65,6 @@ export const ContactSection: React.FC = () => {
         setSentMessages(JSON.parse(saved));
       }
     } catch {
-      // Ignore localStorage errors
     }
   }, []);
 
@@ -91,7 +89,6 @@ export const ContactSection: React.FC = () => {
     e.preventDefault();
     setErrorAlert(null);
 
-    // Validation
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setErrorAlert('Please fill in all required fields (Name, Email, and Message).');
       return;
@@ -106,7 +103,6 @@ export const ContactSection: React.FC = () => {
     setLoading(true);
 
     setTimeout(() => {
-      // Create new message log
       const newMessage: SentMessage = {
         id: Date.now(),
         name: formData.name.trim(),
@@ -126,17 +122,14 @@ export const ContactSection: React.FC = () => {
       try {
         localStorage.setItem('portfolio_sent_messages', JSON.stringify(updatedHistory));
       } catch {
-        // Ignore localStorage error
       }
 
-      // Trigger mailto draft launch
       const mailtoSubject = encodeURIComponent(formData.subject.trim() || `Portfolio Contact from ${formData.name.trim()}`);
       const mailtoBody = encodeURIComponent(
         `Hi Nand Kishor,\n\n${formData.message.trim()}\n\n---\nSender Name: ${formData.name.trim()}\nSender Email: ${formData.email.trim()}`
       );
       const mailtoUrl = `mailto:${profileData.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
 
-      // Open email client
       window.location.href = mailtoUrl;
 
       setLoading(false);

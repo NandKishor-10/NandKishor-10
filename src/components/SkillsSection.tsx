@@ -391,7 +391,7 @@ export async function handleGenerativeFill({ image, maskCanvas, prompt }: Genera
   );
 };
 
-// Helper Component for Individual Skill Item
+
 const SkillCard: React.FC<{ skill: { name: string; level: number; highlight?: boolean; description?: string }; category: string }> = ({
   skill,
   category,

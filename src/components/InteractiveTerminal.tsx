@@ -194,14 +194,6 @@ export const InteractiveTerminal: React.FC = () => {
             sx={{ fontWeight: 700, mb: 1.5, borderRadius: 2 }}
             icon={<TerminalIcon sx={{ color: 'primary !important' }} />}
             label="Interactive Developer CLI"
-          // sx={{
-          //   bgcolor: 'rgba(255, 255, 255, 0.08)',
-          //   color: '#e2e8f0',
-          //   fontWeight: 700,
-          //   mb: 1.5,
-          //   borderRadius: 2,
-          //   border: '1px solid rgba(255, 255, 255, 0.15)',
-          // }}
           />
           <Typography variant="h3" color="#fff" sx={{ fontWeight: 800, letterSpacing: '-0.02em', mb: 1 }}>
             Query Portfolio via CLI
