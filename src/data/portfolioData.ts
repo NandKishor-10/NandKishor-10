@@ -7,6 +7,8 @@ export const profileData: ProfileInfo = {
   email: "nandkishorgorain@gmail.com",
   linkedin: "https://www.linkedin.com/in/nandkishor10",
   github: "https://github.com/NandKishor-10",
+  x: "https://x.com/NandKishor_10",
+  instagram: "https://www.instagram.com/nandkishor_1o",
   summary: "Android Developer with a BCA in Computer Applications, skilled in Kotlin and Jetpack Compose, with hands-on experience building and shipping mobile apps using MVVM architecture, Koin/Hilt dependency injection, and REST-backed data layers. Also comfortable working across the stack, having independently built and deployed full-stack web applications with React, Next.js, and TypeScript. Strong foundation in software fundamentals, API integration, and cross-platform development.",
   stats: [
     { label: "Mobile & Web Apps", value: "5+", sublabel: "Built & Deployed" },

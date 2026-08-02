@@ -29,6 +29,8 @@ import {
   Check as CheckIcon,
   History as HistoryIcon,
   OpenInNew as OpenInNewIcon,
+  X as XIcon,
+  Instagram as InstagramIcon,
 } from '@mui/icons-material';
 import { motion } from 'motion/react';
 import { profileData } from '../data/portfolioData';
@@ -254,32 +256,67 @@ export const ContactSection: React.FC = () => {
                   <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 2 }}>
                     Connect on Social Profiles
                   </Typography>
-                  <Stack direction="row" spacing={2}>
-                    <Button
-                      variant="outlined"
-                      startIcon={<LinkedInIcon />}
-                      endIcon={<OpenInNewIcon sx={{ fontSize: 14 }} />}
-                      href={profileData.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      fullWidth
-                      sx={{ borderRadius: 2 }}
-                    >
-                      LinkedIn
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      startIcon={<GitHubIcon />}
-                      endIcon={<OpenInNewIcon sx={{ fontSize: 14 }} />}
-                      href={profileData.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      fullWidth
-                      sx={{ borderRadius: 2 }}
-                    >
-                      GitHub
-                    </Button>
-                  </Stack>
+                  <Grid container spacing={2}>
+                    <Grid size={{ xs: 6 }}>
+                      <Button
+                        variant="outlined"
+                        startIcon={<LinkedInIcon />}
+                        endIcon={<OpenInNewIcon sx={{ fontSize: 14 }} />}
+                        href={profileData.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        fullWidth
+                        sx={{ borderRadius: 2 }}
+                      >
+                        LinkedIn
+                      </Button>
+                    </Grid>
+
+                    <Grid size={{ xs: 6 }}>
+                      <Button
+                        variant="outlined"
+                        startIcon={<GitHubIcon />}
+                        endIcon={<OpenInNewIcon sx={{ fontSize: 14 }} />}
+                        href={profileData.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        fullWidth
+                        sx={{ borderRadius: 2 }}
+                      >
+                        GitHub
+                      </Button>
+                    </Grid>
+
+                    <Grid size={{ xs: 6 }}>
+                      <Button
+                        variant="outlined"
+                        startIcon={<XIcon />}
+                        endIcon={<OpenInNewIcon sx={{ fontSize: 14 }} />}
+                        href={profileData.x}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        fullWidth
+                        sx={{ borderRadius: 2 }}
+                      >
+                        X (Twitter)
+                      </Button>
+                    </Grid>
+
+                    <Grid size={{ xs: 6 }}>
+                      <Button
+                        variant="outlined"
+                        startIcon={<InstagramIcon />}
+                        endIcon={<OpenInNewIcon sx={{ fontSize: 14 }} />}
+                        href={profileData.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        fullWidth
+                        sx={{ borderRadius: 2 }}
+                      >
+                        Instagram
+                      </Button>
+                    </Grid>
+                  </Grid>
                 </Paper>
 
                 {/* Sent Messages History Toggle if available */}
