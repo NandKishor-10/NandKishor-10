@@ -128,7 +128,7 @@ const theme = useTheme();
             <br />
             Can't thank you enough for your time.
             <br />
-            I also love to watch anime BTW.
+            I also love watching anime BTW.
           </Typography>
 
           <Button
