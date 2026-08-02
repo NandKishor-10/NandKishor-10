@@ -88,11 +88,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 variant="h1"
                 sx={{
                   fontWeight: 800,
-                  fontSize: { xs: '2.5rem', sm: '3.25rem', md: '3.75rem' },
+                  fontSize: { xs: '2.2rem', sm: '3.1rem', md: '3.75rem' },
                   letterSpacing: '-0.03em',
-                  lineHeight: 1.1,
+                  lineHeight: 1.15,
                   mb: 2,
                   color: 'text.primary',
+                  wordBreak: 'break-word',
                 }}
               >
                 {profileData.name}
@@ -103,7 +104,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 sx={{
                   fontWeight: 600,
                   mb: 3,
-                  fontSize: { xs: '1.2rem', md: '1.45rem' },
+                  fontSize: { xs: '1.1rem', sm: '1.25rem', md: '1.45rem' },
                   color: 'primary.main',
                   display: 'flex',
                   alignItems: 'center',
@@ -115,14 +116,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 <Box
                   component="span"
                   sx={{
-                    display: 'inline-block',
+                    display: { xs: 'none', sm: 'inline-block' },
                     width: 6,
                     height: 6,
                     borderRadius: '50%',
                     bgcolor: 'secondary.main',
                   }}
                 />
-                <Typography component="span" variant="subtitle1" color="text.secondary" sx={{ fontWeight: 500 }}>
+                <Typography component="span" variant="subtitle1" color="text.secondary" sx={{ fontWeight: 500, fontSize: { xs: '0.875rem', sm: '1rem' } }}>
                   Kotlin • Jetpack Compose • React • Next.js • TypeScript
                 </Typography>
               </Typography>
@@ -131,7 +132,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               <Paper
                 elevation={0}
                 sx={{
-                  p: { xs: 2.5, sm: 3 },
+                  p: { xs: 2.25, sm: 3 },
                   mb: 3.5,
                   borderRadius: 3,
                   bgcolor: theme.palette.mode === 'dark' ? 'rgba(17, 24, 39, 0.6)' : 'rgba(255, 255, 255, 0.8)',
@@ -140,7 +141,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   borderColor: 'divider',
                 }}
               >
-                <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.025rem', lineHeight: 1.7 }}>
+                <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: '0.95rem', sm: '1.025rem' }, lineHeight: 1.7 }}>
                   {profileData.summary}
                 </Typography>
               </Paper>
@@ -152,7 +153,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   size="small"
                   startIcon={<EmailIcon fontSize="small" />}
                   href={`mailto:${profileData.email}`}
-                  sx={{ borderRadius: 2, color: 'text.primary' }}
+                  sx={{ borderRadius: 2, color: 'text.primary', minHeight: 40, px: 2, fontSize: '0.825rem' }}
                 >
                   {profileData.email}
                 </Button>
@@ -164,7 +165,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   endIcon={<LaunchIcon sx={{ fontSize: '0.8rem !important' }} />}
-                  sx={{ borderRadius: 2, color: 'text.primary' }}
+                  sx={{ borderRadius: 2, color: 'text.primary', minHeight: 40, px: 2, fontSize: '0.825rem' }}
                 >
                   LinkedIn
                 </Button>
@@ -176,7 +177,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   endIcon={<LaunchIcon sx={{ fontSize: '0.8rem !important' }} />}
-                  sx={{ borderRadius: 2, color: 'text.primary' }}
+                  sx={{ borderRadius: 2, color: 'text.primary', minHeight: 40, px: 2, fontSize: '0.825rem' }}
                 >
                   GitHub
                 </Button>
@@ -193,7 +194,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   size="large"
                   endIcon={<ArrowIcon />}
                   href="#projects"
-                  sx={{ px: 3.5, py: 1.25, fontSize: '0.95rem' }}
+                  sx={{
+                    px: 3.5,
+                    py: 1.4,
+                    fontSize: '0.95rem',
+                    borderRadius: 2.5,
+                    minHeight: 48,
+                    width: { xs: '100%', sm: 'auto' },
+                  }}
                 >
                   Explore Featured Projects
                 </Button>
@@ -206,7 +214,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   size="large"
                   startIcon={<DownloadIcon />}
                   onClick={onOpenResume}
-                  sx={{ px: 3, py: 1.25, fontSize: '0.95rem' }}
+                  sx={{
+                    px: 3,
+                    py: 1.4,
+                    fontSize: '0.95rem',
+                    borderRadius: 2.5,
+                    minHeight: 48,
+                    width: { xs: '100%', sm: 'auto' },
+                  }}
                 >
                   View Resume
                 </Button>

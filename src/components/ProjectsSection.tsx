@@ -100,9 +100,9 @@ export const ProjectsSection: React.FC = () => {
 
         {/* Projects Grid */}
         <AnimatePresence mode="wait">
-          <Grid container spacing={4} key={selectedCategory}>
+          <Grid container spacing={{ xs: 3, md: 4 }} key={selectedCategory}>
             {filteredProjects.map((project, idx) => (
-              <Grid size={{ xs: 12, md: 4 }} key={project.id}>
+              <Grid size={{ xs: 12, sm: 6, md: 4 }} key={project.id}>
                 <Card
                   component={motion.div}
                   initial={{ opacity: 0, y: 20 }}

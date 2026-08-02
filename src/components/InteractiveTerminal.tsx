@@ -226,7 +226,9 @@ export const InteractiveTerminal: React.FC = () => {
                 bgcolor: '#1e293b',
                 color: '#e2e8f0',
                 fontFamily: 'monospace',
-                fontSize: '0.775rem',
+                fontSize: { xs: '0.725rem', sm: '0.775rem' },
+                minHeight: 38,
+                px: 1.5,
                 borderRadius: 2,
                 border: '1px solid rgba(255, 255, 255, 0.08)',
                 '&:hover': {
