@@ -152,7 +152,9 @@ export const Navbar: React.FC<NavbarProps> = ({ mode, onToggleMode, onOpenResume
               sx={{
                 borderRadius: 2,
                 fontWeight: 600,
-                fontSize: '0.85rem',
+                fontSize: { xs: '0.8rem', sm: '0.85rem' },
+                minHeight: 40,
+                px: { xs: 1.5, sm: 2 },
               }}
             >
               Resume
@@ -163,9 +165,12 @@ export const Navbar: React.FC<NavbarProps> = ({ mode, onToggleMode, onOpenResume
               <IconButton
                 onClick={onToggleMode}
                 color="inherit"
+                aria-label="Toggle dark mode"
                 sx={{
                   bgcolor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.06)' : 'rgba(15, 23, 42, 0.04)',
                   p: 1,
+                  width: 42,
+                  height: 42,
                   borderRadius: 2,
                   '&:hover': {
                     bgcolor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.12)' : 'rgba(15, 23, 42, 0.08)',
@@ -181,8 +186,11 @@ export const Navbar: React.FC<NavbarProps> = ({ mode, onToggleMode, onOpenResume
               <IconButton
                 onClick={handleDrawerToggle}
                 color="inherit"
+                aria-label="Open mobile menu"
                 sx={{
                   bgcolor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.06)' : 'rgba(15, 23, 42, 0.04)',
+                  width: 42,
+                  height: 42,
                   borderRadius: 2,
                 }}
               >
@@ -202,32 +210,66 @@ export const Navbar: React.FC<NavbarProps> = ({ mode, onToggleMode, onOpenResume
         slotProps={{
           paper: {
             sx: {
-              width: 280,
-              p: 2.5,
+              width: { xs: '85vw', sm: 320 },
+              maxWidth: 340,
+              p: 3,
               bgcolor: 'background.paper',
               backgroundImage: 'none',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
             },
           },
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
-          <Typography variant="h6" sx={{ fontWeight: 800 }}>
-            Navigation
-          </Typography>
-          <IconButton onClick={handleDrawerToggle}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Box
+              sx={{
+                width: 32,
+                height: 32,
+                borderRadius: 1.5,
+                bgcolor: 'primary.main',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'primary.contrastText',
+              }}
+            >
+              <CodeIcon sx={{ fontSize: '1.1rem' }} />
+            </Box>
+            <Typography variant="h6" sx={{ fontWeight: 800, fontSize: '1.05rem' }}>
+              Menu
+            </Typography>
+          </Box>
+          <IconButton onClick={handleDrawerToggle} aria-label="Close menu">
             <CloseIcon />
           </IconButton>
         </Box>
-        <List>
-          {navItems.map((item) => (
-            <ListItem key={item.label} disablePadding>
+
+        <List sx={{ pt: 0 }}>
+          {navItems.map((item, idx) => (
+            <ListItem
+              key={item.label}
+              disablePadding
+              component={motion.li}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: idx * 0.05, duration: 0.3 }}
+            >
               <ListItemButton
                 onClick={() => handleNavClick(item.href)}
-                sx={{ borderRadius: 2, mb: 0.5 }}
+                sx={{
+                  borderRadius: 2.5,
+                  mb: 1,
+                  minHeight: 48,
+                  px: 2,
+                  '&:hover': {
+                    bgcolor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(15, 23, 42, 0.05)',
+                  },
+                }}
               >
                 <ListItemText
                   primary={item.label}
-                  slotProps={{ primary: { sx: { fontWeight: 500, fontSize: '0.95rem' } } }}
+                  slotProps={{ primary: { sx: { fontWeight: 600, fontSize: '1rem' } } }}
                 />
               </ListItemButton>
             </ListItem>
@@ -239,17 +281,19 @@ export const Navbar: React.FC<NavbarProps> = ({ mode, onToggleMode, onOpenResume
             label="Available for Opportunities"
             color="secondary"
             size="small"
-            sx={{ width: '100%', mb: 2, fontWeight: 600 }}
+            sx={{ width: '100%', mb: 2, fontWeight: 700, py: 1.5 }}
           />
           <Button
             variant="contained"
             color="primary"
             fullWidth
+            size="large"
             startIcon={<ResumeIcon />}
             onClick={() => {
               setMobileOpen(false);
               onOpenResume();
             }}
+            sx={{ borderRadius: 2.5, py: 1.2, fontWeight: 700 }}
           >
             View Full Resume
           </Button>

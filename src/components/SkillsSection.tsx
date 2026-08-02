@@ -345,9 +345,22 @@ export async function handleGenerativeFill({ image, maskCanvas, prompt }: Genera
                     }}
                   >
                     <Stack direction="row" sx={{ mb: 1.5, justifyContent: 'space-between', alignItems: 'center' }}>
-                      <Typography variant="subtitle2" sx={{ color: '#e2e8f0', fontFamily: 'monospace', fontWeight: 700 }}>
+                      <Typography variant="subtitle2" sx={{ color: '#e2e8f0', fontFamily: 'monospace', fontWeight: 700, fontSize: { xs: '0.78rem', sm: '0.85rem' } }}>
                         {snippet.title}
                       </Typography>
+                      <Button
+                        size="small"
+                        onClick={() => handleCopyCode(snippet.code, idx)}
+                        startIcon={copiedIndex === idx ? <CheckIcon sx={{ fontSize: '0.9rem !important' }} /> : <CopyIcon sx={{ fontSize: '0.9rem !important' }} />}
+                        sx={{
+                          color: copiedIndex === idx ? '#4ade80' : '#94a3b8',
+                          fontSize: '0.75rem',
+                          textTransform: 'none',
+                          minHeight: 32,
+                        }}
+                      >
+                        {copiedIndex === idx ? 'Copied' : 'Copy'}
+                      </Button>
                     </Stack>
                     <Box
                       component="pre"
@@ -357,9 +370,10 @@ export async function handleGenerativeFill({ image, maskCanvas, prompt }: Genera
                         borderRadius: 2,
                         bgcolor: '#090909',
                         color: '#e2e8f0',
-                        fontSize: '0.8rem',
+                        fontSize: { xs: '0.75rem', sm: '0.8rem' },
                         fontFamily: 'monospace',
                         overflowX: 'auto',
+                        WebkitOverflowScrolling: 'touch',
                         lineHeight: 1.5,
                         flexGrow: 1,
                       }}

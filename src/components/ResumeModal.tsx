@@ -38,8 +38,9 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ open, onClose }) => {
       slotProps={{
         paper: {
           sx: {
-            borderRadius: 4,
-            maxHeight: '92vh',
+            borderRadius: { xs: 3, sm: 4 },
+            m: { xs: 1, sm: 2.5 },
+            maxHeight: '94vh',
             backgroundImage: 'none',
           },
         },
@@ -48,7 +49,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ open, onClose }) => {
       <DialogTitle
         sx={{
           m: 0,
-          p: 2.5,
+          p: { xs: 1.75, sm: 2.5 },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -57,7 +58,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ open, onClose }) => {
           bgcolor: 'background.paper',
         }}
       >
-        <Typography variant="h6" sx={{ fontWeight: 800 }}>
+        <Typography variant="h6" sx={{ fontWeight: 800, fontSize: { xs: '0.95rem', sm: '1.25rem' } }}>
           Nand Kishor Gorain — Digital Resume
         </Typography>
         <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
@@ -67,12 +68,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ open, onClose }) => {
             size="small"
             startIcon={<PrintIcon />}
             onClick={handlePrint}
-            sx={{ fontWeight: 600, borderRadius: 2 }}
+            sx={{ fontWeight: 600, borderRadius: 2, minHeight: 36, px: { xs: 1.25, sm: 2 }, fontSize: { xs: '0.75rem', sm: '0.85rem' } }}
           >
             Print / Save PDF
           </Button>
-          <IconButton onClick={onClose}>
-            <CloseIcon />
+          <IconButton onClick={onClose} aria-label="close" sx={{ minWidth: 38, minHeight: 38 }}>
+            <CloseIcon fontSize="small" />
           </IconButton>
         </Stack>
       </DialogTitle>

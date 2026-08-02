@@ -83,8 +83,9 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onClo
       slotProps={{
         paper: {
           sx: {
-            borderRadius: 4,
-            maxHeight: '90vh',
+            borderRadius: { xs: 3, sm: 4 },
+            m: { xs: 1, sm: 2.5 },
+            maxHeight: '92vh',
             backgroundImage: 'none',
           },
         },
@@ -93,7 +94,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onClo
       <DialogTitle
         sx={{
           m: 0,
-          p: 2.5,
+          p: { xs: 2, sm: 2.5 },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -101,24 +102,38 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, open, onClo
           borderColor: 'divider',
         }}
       >
-        <Box>
-          <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-            <Typography variant="h5" sx={{ fontWeight: 800 }}>
+        <Box sx={{ pr: 1 }}>
+          <Stack direction="row" spacing={1} sx={{ alignItems: 'center', flexWrap: 'wrap', gap: 0.5 }}>
+            <Typography variant="h5" sx={{ fontWeight: 800, fontSize: { xs: '1.15rem', sm: '1.5rem' } }}>
               {project.title}
             </Typography>
             <Chip label={project.category} size="small" color="primary" />
           </Stack>
-          <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
+          <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5, fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
             {project.tagline}
           </Typography>
         </Box>
-        <IconButton onClick={onClose} aria-label="close">
+        <IconButton onClick={onClose} aria-label="close" sx={{ minWidth: 40, minHeight: 40 }}>
           <CloseIcon />
         </IconButton>
       </DialogTitle>
 
-      <DialogContent sx={{ p: 3 }}>
-        <Tabs value={tabIndex} onChange={(_, val) => setTabIndex(val)} sx={{ mb: 3 }}>
+      <DialogContent sx={{ p: { xs: 2, sm: 3 } }}>
+        <Tabs
+          value={tabIndex}
+          onChange={(_, val) => setTabIndex(val)}
+          variant="scrollable"
+          scrollButtons="auto"
+          sx={{
+            mb: 3,
+            '& .MuiTab-root': {
+              fontSize: { xs: '0.8rem', sm: '0.875rem' },
+              fontWeight: 600,
+              minHeight: 44,
+              px: { xs: 1.5, sm: 2 },
+            },
+          }}
+        >
           <Tab label="Interactive Demo Simulator" icon={<PlayIcon fontSize="small" />} iconPosition="start" />
           <Tab label="Project Overview & Impact" icon={<AiIcon fontSize="small" />} iconPosition="start" />
           <Tab label="Code Snippet" icon={<CodeIcon fontSize="small" />} iconPosition="start" />
