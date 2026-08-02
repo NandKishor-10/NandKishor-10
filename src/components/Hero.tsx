@@ -249,10 +249,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 {/* Profile Header */}
                 <Stack direction="row" spacing={2.5} sx={{ pb: 3, borderBottom: 1, borderColor: 'divider', alignItems: 'center' }}>
                   <Avatar
+                    src='/logo.png'
                     sx={{
                       width: 68,
                       height: 68,
-                      bgcolor: 'primary.main',
                       color: 'primary.contrastText',
                       fontSize: '1.5rem',
                       fontWeight: 800,
