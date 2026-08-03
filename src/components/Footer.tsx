@@ -123,7 +123,7 @@ const theme = useTheme();
         <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.08)', mb: 3 }} />
 
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="caption" sx={{ color: '#64748b' }}>
+          <Typography variant="caption" sx={{ color: '#adadad' }}>
             If you are seeing this message, it means you have reached the end of the page.
             <br />
             Can't thank you enough for your time.

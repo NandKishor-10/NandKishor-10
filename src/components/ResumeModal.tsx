@@ -128,7 +128,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ open, onClose }) => {
             >
               PROFESSIONAL SUMMARY
             </Typography>
-            <Typography variant="body2" className="resume-text" sx={{ color: '#334155', lineHeight: 1.5 }}>
+            <Typography variant="body2" className="resume-text" sx={{ color: '#475569', lineHeight: 1.5 }}>
               {profileData.summary}
             </Typography>
           </Box>
@@ -179,7 +179,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ open, onClose }) => {
                       )}
                     </Stack>
                   </Stack>
-                  <Box component="ul" className="resume-bullets" sx={{ m: 0, pl: 2, pt: 0.25, color: '#334155', fontSize: '0.8rem', lineHeight: 1.45 }}>
+                  <Box component="ul" className="resume-bullets" sx={{ m: 0, pl: 2, pt: 0.25, color: '#000', fontSize: '0.8rem', lineHeight: 1.45 }}>
                     {project.bulletPoints.map((pt, idx) => (
                       <li key={idx}>{pt}</li>
                     ))}

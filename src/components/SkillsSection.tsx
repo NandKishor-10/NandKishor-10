@@ -144,33 +144,46 @@ export async function handleGenerativeFill({ image, maskCanvas, prompt }: Genera
 
         {/* Search & Category Filter Bar */}
         <Stack
-          direction={{ xs: 'column', md: 'row' }}
+          direction={{ xs: "column", md: "row" }}
           spacing={2}
-          sx={{ mb: 4, justifyContent: 'space-between', alignItems: 'center' }}
+          sx={{
+            mb: 4,
+            alignItems: { xs: "stretch", md: "center" },
+          }}
         >
-          <Tabs
-            value={searchQuery ? false : activeTab}
-            onChange={handleTabChange}
-            variant="scrollable"
-            scrollButtons="auto"
+          <Box
             sx={{
-              '& .MuiTab-root': {
-                fontWeight: 600,
-                fontSize: '0.9rem',
-                minHeight: 44,
-                borderRadius: 2,
-                px: 2.25,
-              },
+              flex: 1,
+              minWidth: 0, // important
+              width: "100%",
             }}
           >
-            <Tab label="All Categories" />
-            {skillCategoriesData.map((cat, idx) => (
-              <Tab key={idx} label={cat.title} />
-            ))}
-          </Tabs>
+            <Tabs
+              value={searchQuery ? false : activeTab}
+              onChange={handleTabChange}
+              variant="scrollable"
+              scrollButtons="auto"
+              allowScrollButtonsMobile
+              sx={{
+                width: "100%",
+                "& .MuiTab-root": {
+                  minHeight: 44,
+                  minWidth: "auto",
+                  px: 2,
+                  fontSize: "0.9rem",
+                  fontWeight: 600,
+                },
+              }}
+            >
+              <Tab label="All Categories" />
+              {skillCategoriesData.map((cat, idx) => (
+                <Tab key={idx} label={cat.title} />
+              ))}
+            </Tabs>
+          </Box>
 
           <TextField
-            placeholder="Search skills (React, Canvas, Node...)"
+            placeholder="Search skills"
             size="small"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -179,12 +192,12 @@ export async function handleGenerativeFill({ image, maskCanvas, prompt }: Genera
                 startAdornment: (
                   <InputAdornment position="start">
                     <SearchIcon fontSize="small" sx={{ color: 'text.secondary' }} />
-                  </InputAdornment>
-                ),
+                  </InputAdornment>),
               },
             }}
             sx={{
-              width: { xs: '100%', md: 300 },
+              width: { xs: "100%", md: 300 },
+              flexShrink: 0,
               '& .MuiOutlinedInput-root': {
                 borderRadius: 2.5,
                 bgcolor: 'background.paper',
